@@ -1,6 +1,6 @@
 import React from "react";
-import WeatherWidget from "./components/WeatherWidget";
-import "./styles.css"; // если нужны глобальные стили
+import WeatherWidget from "./components/weatherWidget";
+
 
 const App: React.FC = () => {
 	return (

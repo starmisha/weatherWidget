@@ -1,17 +1,21 @@
 import { useState, useEffect } from "react";
 
 export const useGeolocation = () => {
-	const [position, setPosition] = useState({ latitude: null, longitude: null });
-	const [loading, setLoading] = useState(true);
+	const [position, setPosition] = useState<{ latitude: number | null; longitude: number | null }>({
+		latitude: null,
+		longitude: null,
+	});
+	const [loading, setLoading] = useState<boolean>(true);
 	const [error, setError] = useState<string | null>(null);
 
-	useEffect(() => {
+	const getLocation = () => {
 		if (!navigator.geolocation) {
 			setError("Геолокация не поддерживается браузером.");
 			setLoading(false);
 			return;
 		}
 
+		setLoading(true);
 		navigator.geolocation.getCurrentPosition(
 			(pos) => {
 				setPosition({
@@ -25,7 +29,12 @@ export const useGeolocation = () => {
 				setLoading(false);
 			}
 		);
-	}, []); // Пустой массив зависимостей → запускается один раз при загрузке
+	};
 
-	return { position, loading, error };
+	// Запрашиваем местоположение при загрузке
+	useEffect(() => {
+		getLocation();
+	}, []);
+
+	return { position, loading, error, getLocation };
 };
