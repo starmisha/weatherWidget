@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "es5", // Транспилируем в ES5 для совместимости с большинством браузеров
+    "lib": [
+      "dom",
+      "es2015"
+    ], // Включаем библиотеки для работы с DOM и ES2015
+    "jsx": "react", // Разрешаем использование JSX в файлах .tsx
+    "moduleResolution": "node", // Разрешение модулей, как в Node.js
+    "module": "esnext", // Модульный формат ESNext
+    "allowJs": true, // Разрешение использования файлов .js
+    "skipLibCheck": true, // Пропуск проверки библиотек (ускоряет компиляцию)
+    "esModuleInterop": true, // Разрешение на использование CommonJS модулей
+    "strict": true, // Включаем строгую типизацию
+    "resolveJsonModule": true, // Разрешаем импорт JSON файлов
+    "noImplicitAny": true, // Запрещаем использовать тип `any` без явного указания
+    "isolatedModules": true // Разрешаем работу с модулями изолированно
+  },
+  "include": [
+    "src/**/*" // Включаем все файлы в папке src
+  ],
+  "exclude": [
+    "node_modules" // Исключаем папку node_modules
+  ]
+}
